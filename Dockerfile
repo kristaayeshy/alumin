@@ -10,7 +10,7 @@ ADD etc/xray.json /tmp/xray.json
 ADD start.sh /start.sh
 
 RUN apt update && \
-    apt ca-certificates caddy tor wget -y && \
+    apt install ca-certificates caddy tor wget -y && \
     wget -O Xray-linux-64.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip && \
     unzip Xray-linux-64.zip && \
     chmod +x /xray && \
