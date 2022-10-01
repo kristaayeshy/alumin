@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM debian:sid
 
 ARG AUUID="90db98cc-4a43-4d87-9400-3bdcbf375cfb"
 ARG CADDYIndexPage="https://github.com/AYJCSGM/mikutap/archive/master.zip"
@@ -9,8 +9,8 @@ ADD etc/Caddyfile /tmp/Caddyfile
 ADD etc/xray.json /tmp/xray.json
 ADD start.sh /start.sh
 
-RUN apk update && \
-    apk add --no-cache ca-certificates caddy tor wget && \
+RUN apt update && \
+    apt ca-certificates caddy tor wget -y && \
     wget -O Xray-linux-64.zip https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip && \
     unzip Xray-linux-64.zip && \
     chmod +x /xray && \
